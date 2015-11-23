@@ -1,29 +1,14 @@
 var mongoose = require('mongoose');
 var articleSchema = mongoose.Schema({
-	title: {
-		type: String,
-		index: true,
-		required: true
-	},
-	body: {
-		type: String,
-		required: true
-	},
-	category: {
-		type: String,
-		index: true,
-		required: true
-	},
-	date: {
-		type: Date,
-		default: Date.now
-	},
-	other: {
-		type: String
-	}
+	title:    { type: String, index: true, required: true	},
+	body:     { type: String, required: true				},
+	category: { type: String, index: true, required: true	},
+	date:     { type: Date, default: Date.now				},
+	other:    { type: String								}
 });
 
-var Article = module.exports = mongoose.model('Article',articleSchema);
+var Article = module.exports = mongoose.model('Article',articleSchema); 
+//貌似起了个别名？当你new Article的时候，其实用的还是articleSchema?
 
 module.exports.getArticles = function  (callback) {
 	Article.find(callback);
